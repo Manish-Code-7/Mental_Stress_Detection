@@ -1,0 +1,25 @@
+# Ignore environment folder
+ml_env_stress/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Logs and system files
+*.log
+.DS_Store
+Thumbs.db
+
+# (Optional) Docker / build artifacts
+docker/
+catboost_info/
+
+# Keep important files
+!mental_stress.ipynb
+!stress.csv
+!stacking_model.pkl
+!tfidf_vectorizer.pkl
