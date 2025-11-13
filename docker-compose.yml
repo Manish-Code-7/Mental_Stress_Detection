@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: web_files/backend/Dockerfile
+    container_name: stress-backend
+    environment:
+      - PORT=8001
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: python web_files/backend/app.py
+
+  frontend:
+    build:
+      context: web_files/frontend
+      dockerfile: Dockerfile
+    container_name: stress-frontend
+    environment:
+      - BACKEND_URL=http://backend:8001
+      - NEXT_TELEMETRY_DISABLED=1
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    command: npm run dev
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+{
+  "all_words": [
+    "empty_text",
+    "short_text"
+  ],
+  "word_frequencies": {
+    "short_text": 2833,
+    "empty_text": 5
+  },
+  "vocabulary_size": 2,
+  "recommended_max_features": 4
+}

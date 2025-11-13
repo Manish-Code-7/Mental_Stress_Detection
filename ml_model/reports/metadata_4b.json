@@ -1,0 +1,26 @@
+{
+  "cell": "4b_advanced_vectorizers",
+  "character_vectorizers": [
+    "char_tfidf",
+    "char_count",
+    "char_short"
+  ],
+  "hybrid_vectorizers": [
+    "hybrid_balanced",
+    "hybrid_word_heavy",
+    "hybrid_char_heavy"
+  ],
+  "specialized_vectorizers": [
+    "mental_health",
+    "phrase_heavy",
+    "conservative"
+  ],
+  "total": 9,
+  "key_features": [
+    "Character-level n-grams (2-6)",
+    "Hybrid word-char combinations",
+    "Domain-specific configurations",
+    "Multiple feature union strategies"
+  ],
+  "timestamp": "2025-11-11T10:39:44.956141"
+}

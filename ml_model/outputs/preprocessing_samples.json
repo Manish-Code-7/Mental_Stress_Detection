@@ -1,0 +1,64 @@
+{
+  "samples": [
+    {
+      "original_text": "8601tu",
+      "clean_text": "short_text",
+      "sentiment_compound": 0.0,
+      "label": "1"
+    },
+    {
+      "original_text": "8lbrx9",
+      "clean_text": "short_text",
+      "sentiment_compound": 0.0,
+      "label": "0"
+    },
+    {
+      "original_text": "9ch1zh",
+      "clean_text": "short_text",
+      "sentiment_compound": 0.0,
+      "label": "1"
+    },
+    {
+      "original_text": "7rorpp",
+      "clean_text": "short_text",
+      "sentiment_compound": 0.0,
+      "label": "1"
+    },
+    {
+      "original_text": "9p2gbc",
+      "clean_text": "short_text",
+      "sentiment_compound": 0.0,
+      "label": "1"
+    },
+    {
+      "original_text": "7tx7et",
+      "clean_text": "short_text",
+      "sentiment_compound": 0.0,
+      "label": "1"
+    },
+    {
+      "original_text": "7iphly",
+      "clean_text": "short_text",
+      "sentiment_compound": 0.0,
+      "label": "0"
+    },
+    {
+      "original_text": "5m3k80",
+      "clean_text": "short_text",
+      "sentiment_compound": 0.0,
+      "label": "1"
+    },
+    {
+      "original_text": "7nhy1v",
+      "clean_text": "short_text",
+      "sentiment_compound": 0.0,
+      "label": "1"
+    },
+    {
+      "original_text": "61eiq6",
+      "clean_text": "short_text",
+      "sentiment_compound": 0.0,
+      "label": "1"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "classes": [
+    1,
+    0
+  ],
+  "class_weights": {
+    "1": 0.9536290322580645,
+    "0": 1.051111111111111
+  },
+  "stratify_recommended": false,
+  "sampling_strategy": "none"
+}

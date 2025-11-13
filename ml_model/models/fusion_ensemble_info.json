@@ -1,0 +1,21 @@
+{
+  "model_type": "Fusion Ensemble",
+  "num_models": 4,
+  "models": [
+    "BaggingSGD + FeatureUnion",
+    "LogisticRegression + TF-IDF",
+    "BaggingSGD + TF-IDF",
+    "RidgeClassifier + TF-IDF"
+  ],
+  "performance": {
+    "accuracy": 0.7464788732394366,
+    "f1_score": 0.7466047588974934,
+    "precision": 0.7470267399484978,
+    "recall": 0.7464788732394366
+  },
+  "labels": [
+    0,
+    1
+  ],
+  "timestamp": "2025-11-11T20:04:05.143940"
+}

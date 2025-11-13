@@ -1,0 +1,17 @@
+{
+  "vectorizers": [
+    "bow_binary",
+    "bow_freq",
+    "tfidf_unigram",
+    "tfidf_bigram",
+    "tfidf_char",
+    "hybrid_char_word",
+    "mental_health_vocab",
+    "hashing",
+    "sentence_embeddings",
+    "ensemble_vectorizer"
+  ],
+  "sentence_transformers": false,
+  "spacy_available": true,
+  "mental_health_vocab_size": 34
+}

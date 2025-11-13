@@ -1,0 +1,19 @@
+{
+  "linguistic_features": 17,
+  "vectorizers": [
+    "count_unigram",
+    "count_bigram",
+    "tfidf_standard",
+    "tfidf_char",
+    "feature_union",
+    "custom_stress"
+  ],
+  "optimization": "77_percent_accuracy_config",
+  "key_changes": [
+    "Removed sublinear_tf to avoid negative values",
+    "Added FeatureUnion (gave 77.8%)",
+    "Count-based vectorizers work with all models",
+    "Optimized CustomStressVectorizer"
+  ],
+  "timestamp": "2025-11-11T10:34:16.512148"
+}

@@ -12,12 +12,16 @@ __pycache__/
 
 # Logs and system files
 *.log
+stress_detection.log
 .DS_Store
 Thumbs.db
 
-# (Optional) Docker / build artifacts
+# Docker / build artifacts
 docker/
 catboost_info/
+
+# API cache
+api_api_cache/
 
 # Keep important files
 !mental_stress.ipynb

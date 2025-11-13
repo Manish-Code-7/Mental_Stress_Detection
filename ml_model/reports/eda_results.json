@@ -1,0 +1,124 @@
+{
+  "basic_stats": {
+    "shape": [
+      2838,
+      116
+    ],
+    "memory_mb": 4.76,
+    "duplicates": 0,
+    "missing_total": 0
+  },
+  "text_stats": {
+    "text": {
+      "avg_length": 447.99647639182524,
+      "median_length": 421.0,
+      "std_length": 168.92912205427288,
+      "max_length": 1639,
+      "min_length": 6,
+      "avg_words": 85.66983791402396,
+      "median_words": 80.0,
+      "avg_sentences": 6.187455954897815
+    }
+  },
+  "label_distribution": {
+    "1": 1488,
+    "0": 1350
+  },
+  "high_correlations": [
+    {
+      "feature1": "social_karma",
+      "feature2": "social_num_comments",
+      "correlation": 0.7945165217569269
+    },
+    {
+      "feature1": "syntax_ari",
+      "feature2": "syntax_fk_grade",
+      "correlation": 0.967379859901828
+    },
+    {
+      "feature1": "lex_liwc_WC",
+      "feature2": "lex_liwc_WPS",
+      "correlation": 0.719563990146796
+    },
+    {
+      "feature1": "lex_liwc_WC",
+      "feature2": "text_length",
+      "correlation": 0.9813643270293204
+    },
+    {
+      "feature1": "lex_liwc_WC",
+      "feature2": "text_word_count",
+      "correlation": 0.9961839316013401
+    },
+    {
+      "feature1": "lex_liwc_Analytic",
+      "feature2": "lex_liwc_pronoun",
+      "correlation": -0.70404797231398
+    },
+    {
+      "feature1": "lex_liwc_Clout",
+      "feature2": "lex_liwc_i",
+      "correlation": -0.7173363140533755
+    },
+    {
+      "feature1": "lex_liwc_Clout",
+      "feature2": "lex_liwc_social",
+      "correlation": 0.7820898736777308
+    },
+    {
+      "feature1": "lex_liwc_Tone",
+      "feature2": "lex_liwc_posemo",
+      "correlation": 0.7487646312864663
+    },
+    {
+      "feature1": "lex_liwc_WPS",
+      "feature2": "text_length",
+      "correlation": 0.7107705052370353
+    },
+    {
+      "feature1": "lex_liwc_WPS",
+      "feature2": "text_word_count",
+      "correlation": 0.7183210625918177
+    },
+    {
+      "feature1": "lex_liwc_pronoun",
+      "feature2": "lex_liwc_ppron",
+      "correlation": 0.8171590418337418
+    },
+    {
+      "feature1": "lex_liwc_affect",
+      "feature2": "lex_liwc_negemo",
+      "correlation": 0.7005667224461808
+    },
+    {
+      "feature1": "lex_liwc_relativ",
+      "feature2": "lex_liwc_time",
+      "correlation": 0.7111495804907366
+    },
+    {
+      "feature1": "lex_liwc_AllPunc",
+      "feature2": "lex_liwc_OtherP",
+      "correlation": 0.8621867112639011
+    },
+    {
+      "feature1": "text_length",
+      "feature2": "text_word_count",
+      "correlation": 0.9835358615932904
+    }
+  ],
+  "insights": [
+    {
+      "type": "success",
+      "message": "Classes are well balanced for training"
+    },
+    {
+      "type": "warning",
+      "message": "Low subreddit diversity - Data may be biased toward specific communities"
+    }
+  ],
+  "timestamp": "2025-11-11T16:44:44.711435",
+  "dataset_shape": [
+    2838,
+    119
+  ]
+}

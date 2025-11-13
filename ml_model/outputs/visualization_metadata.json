@@ -1,0 +1,47 @@
+{
+  "distribution": {
+    "path": "outputs/distribution_analysis.png",
+    "type": "static",
+    "description": "Overall distribution of categorical variables"
+  },
+  "interactive_subreddit": {
+    "path": "outputs/interactive_subreddit_distribution.html",
+    "type": "interactive",
+    "description": "Subreddit vs stress level analysis"
+  },
+  "interactive_label": {
+    "path": "outputs/interactive_label_distribution.html",
+    "type": "interactive",
+    "description": "Data visualization"
+  },
+  "subreddit": {
+    "path": "outputs/subreddit_analysis.png",
+    "type": "static",
+    "description": "Subreddit vs stress level analysis"
+  },
+  "class_balance": {
+    "path": "outputs/class_balance_analysis.png",
+    "type": "static",
+    "description": "Class balance and imbalance analysis"
+  },
+  "text_length_post_id": {
+    "path": "outputs/text_length_analysis_post_id.png",
+    "type": "static",
+    "description": "Text length and word count distributions"
+  },
+  "text_length_text": {
+    "path": "outputs/text_length_analysis_text.png",
+    "type": "static",
+    "description": "Text length and word count distributions"
+  },
+  "wordcloud_post_id": {
+    "path": "outputs/wordcloud_analysis_post_id.png",
+    "type": "static",
+    "description": "Word frequency visualization by class"
+  },
+  "wordcloud_text": {
+    "path": "outputs/wordcloud_analysis_text.png",
+    "type": "static",
+    "description": "Word frequency visualization by class"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "cell": "4a_basic_vectorizers",
+  "count_vectorizers": [
+    "count_uni",
+    "count_bi",
+    "count_tri",
+    "count_binary"
+  ],
+  "tfidf_vectorizers": [
+    "tfidf_standard",
+    "tfidf_word",
+    "tfidf_l1",
+    "tfidf_hd"
+  ],
+  "total": 8,
+  "key_features": [
+    "No negative values (sublinear_tf=False)",
+    "Compatible with Naive Bayes",
+    "Proper min_df/max_df settings",
+    "Multiple n-gram ranges"
+  ],
+  "timestamp": "2025-11-11T10:39:06.339716"
+}

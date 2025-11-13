@@ -1,0 +1,46 @@
+{
+  "total_combinations": 377,
+  "best_combination": {
+    "model": "KNN + tfidf_char",
+    "f1_score": 0.5389900058120988,
+    "accuracy": 0.5387323943661971,
+    "balanced_accuracy": 0.5384787472035795
+  },
+  "top_5_combinations": [
+    {
+      "model": "LogisticRegression",
+      "vectorizer": "tfidf_unigram",
+      "f1_score": 0.4010698726887149,
+      "accuracy": 0.5404929577464789
+    },
+    {
+      "model": "LogisticRegression_L1",
+      "vectorizer": "tfidf_unigram",
+      "f1_score": 0.3101881327885318,
+      "accuracy": 0.477112676056338
+    },
+    {
+      "model": "RidgeClassifier",
+      "vectorizer": "tfidf_unigram",
+      "f1_score": 0.4010698726887149,
+      "accuracy": 0.5404929577464789
+    },
+    {
+      "model": "SGDClassifier",
+      "vectorizer": "tfidf_unigram",
+      "f1_score": 0.30631281723755416,
+      "accuracy": 0.4753521126760563
+    },
+    {
+      "model": "MultinomialNB",
+      "vectorizer": "tfidf_unigram",
+      "f1_score": 0.3946247578931533,
+      "accuracy": 0.5387323943661971
+    }
+  ],
+  "model_count": 30,
+  "vectorizer_count": 15,
+  "train_samples": 2270,
+  "test_samples": 568,
+  "timestamp": "2025-11-11T10:36:20.177861"
+}

@@ -1,0 +1,43 @@
+{
+  "config": {
+    "remove_urls": true,
+    "remove_mentions": true,
+    "remove_hashtags": true,
+    "remove_digits": false,
+    "remove_punctuation": false,
+    "lowercase": true,
+    "remove_stopwords": false,
+    "apply_lemmatization": false,
+    "preserve_emphasis": true,
+    "min_word_length": 2,
+    "max_word_length": 50,
+    "batch_size": 1000,
+    "show_progress": true
+  },
+  "statistics": {
+    "original_stats": {
+      "avg_length": 447.99647639182524,
+      "avg_words": 85.66983791402396,
+      "max_length": 1639,
+      "min_length": 6
+    },
+    "cleaned_stats": {
+      "avg_length": 431.41120507399575,
+      "avg_words": 80.38794926004228,
+      "max_length": 1589,
+      "min_length": 0
+    },
+    "reduction": {
+      "length_reduction_pct": 3.702098608321136,
+      "word_reduction_pct": 6.165400545385003,
+      "empty_texts": 4,
+      "empty_texts_pct": 0.14094432699083861
+    },
+    "total_texts_processed": 2838
+  },
+  "stopwords_count": 13,
+  "preserved_keywords_count": 65,
+  "lemmatization_tool": "spacy",
+  "text_column": "text",
+  "timestamp": "2025-11-11T16:44:58.021121"
+}

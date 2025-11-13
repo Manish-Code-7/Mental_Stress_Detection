@@ -1,0 +1,27 @@
+{
+  "cell": "4c_custom_vectorizers",
+  "custom_vectorizers": [
+    "stress_weighted",
+    "stress_weighted_hd",
+    "emotional_polarity",
+    "emotional_polarity_hd",
+    "multilevel_ensemble"
+  ],
+  "total_custom": 5,
+  "total_all": 22,
+  "breakdown": {
+    "basic": 8,
+    "advanced": 9,
+    "custom": 5
+  },
+  "custom_features": [
+    "Stress-weighted vectorization",
+    "Emotional polarity analysis",
+    "Multi-level ensemble",
+    "Domain-specific mental health features",
+    "30+ stress keywords integrated",
+    "25+ negative emotion terms",
+    "20+ positive emotion terms"
+  ],
+  "timestamp": "2025-11-11T14:56:51.602647"
+}

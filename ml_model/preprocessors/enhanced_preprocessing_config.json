@@ -1,0 +1,66 @@
+{
+  "preprocessing_settings": {
+    "preserve_emotional_context": true,
+    "stopwords_count": 252,
+    "preserved_keywords_count": 67,
+    "lemmatization_tool": "nltk"
+  },
+  "processing_stats": {
+    "text_processing": {
+      "original_avg_length": 6.000704721634954,
+      "cleaned_avg_length": 10.0,
+      "length_reduction_pct": -66.64709336465063,
+      "original_avg_words": 1.0,
+      "cleaned_avg_words": 1.0,
+      "word_reduction_pct": 0.0,
+      "empty_after_cleaning": 5,
+      "short_after_cleaning": 2833,
+      "effective_texts": 0,
+      "data_retention_rate": 0.0
+    },
+    "sentiment_analysis": {
+      "sentiment_compound": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "sentiment_pos": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "sentiment_neu": {
+        "mean": 1.0,
+        "std": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "sentiment_neg": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      }
+    },
+    "vocabulary_analysis": {
+      "estimated_vocab_size": 2,
+      "avg_unique_words_per_text": 1.0
+    }
+  },
+  "text_column_processed": "post_id",
+  "output_columns": {
+    "clean_text": "Main processed text column",
+    "sentiment_compound": "Overall sentiment score (-1 to 1)",
+    "sentiment_pos": "Positive sentiment score",
+    "sentiment_neu": "Neutral sentiment score",
+    "sentiment_neg": "Negative sentiment score"
+  },
+  "api_ready": true,
+  "next_steps": [
+    "feature_extraction",
+    "model_training"
+  ],
+  "timestamp": "2025-09-25T00:44:09.502446"
+}

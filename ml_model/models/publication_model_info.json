@@ -1,0 +1,24 @@
+{
+  "model_name": "RidgeClassifier_Best",
+  "vectorizer_name": "tfidf_bigram_optimized",
+  "performance": {
+    "accuracy": 0.7623239436619719,
+    "f1_score": 0.7623438795215568,
+    "precision": 0.7623685445134434,
+    "recall": 0.7623239436619719,
+    "balanced_accuracy": 0.7618319661943823,
+    "mcc": 0.5235760914198687,
+    "cv_f1_mean": 0.7506469724391334
+  },
+  "dataset_info": {
+    "total_samples": 2838,
+    "train_samples": 2270,
+    "test_samples": 568,
+    "features": 12000
+  },
+  "training_info": {
+    "timestamp": "2025-11-11T16:55:25.913322",
+    "training_time_seconds": 118.8609790802002,
+    "cv_folds": 3
+  }
+}

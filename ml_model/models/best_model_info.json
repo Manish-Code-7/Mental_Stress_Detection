@@ -1,0 +1,7 @@
+{
+  "model_name": "LogisticRegression",
+  "vectorizer_name": "weighted_tfidf",
+  "f1_score": 0.7501396214706795,
+  "accuracy": 0.75,
+  "timestamp": "20251111_164601"
+}

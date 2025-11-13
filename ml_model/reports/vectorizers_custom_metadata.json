@@ -1,0 +1,24 @@
+{
+  "timestamp": "2025-11-11T16:45:32.404517",
+  "custom_vectorizers": [
+    "mental_health_tfidf",
+    "stress_focused",
+    "emotion_count",
+    "binary_presence",
+    "char_word_hybrid",
+    "multigram_ensemble",
+    "weighted_tfidf",
+    "high_dim_sparse",
+    "ultimate_feature_union"
+  ],
+  "total_vectorizers": 9,
+  "vocabulary_stats": {
+    "stress_keywords": 18,
+    "negative_emotions": 26,
+    "positive_emotions": 19,
+    "physical_symptoms": 18,
+    "coping_words": 15,
+    "social_words": 17,
+    "total_mental_health_vocab": 112
+  }
+}

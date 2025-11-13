@@ -1,0 +1,33 @@
+{
+  "total_vectorizers": 22,
+  "vectorizer_names": [
+    "count_uni",
+    "count_bi",
+    "count_tri",
+    "count_binary",
+    "tfidf_standard",
+    "tfidf_word",
+    "tfidf_l1",
+    "tfidf_hd",
+    "char_tfidf",
+    "char_count",
+    "char_short",
+    "hybrid_balanced",
+    "hybrid_word_heavy",
+    "hybrid_char_heavy",
+    "mental_health",
+    "phrase_heavy",
+    "conservative",
+    "stress_weighted",
+    "stress_weighted_hd",
+    "emotional_polarity",
+    "emotional_polarity_hd",
+    "multilevel_ensemble"
+  ],
+  "cells_completed": [
+    "4a",
+    "4b",
+    "4c"
+  ],
+  "timestamp": "2025-11-11T14:56:51.603785"
+}
