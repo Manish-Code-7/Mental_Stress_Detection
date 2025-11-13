@@ -5,16 +5,21 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
+# Copy requirements and install dependencies
 COPY web_files/backend/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Optional: common scientific stack helpers that sklearn may leverage
 RUN pip install --no-cache-dir scipy
 
-# Code will be bind-mounted by docker-compose; keep image light
+# Copy all necessary files for deployment
+COPY web_files/backend/ /app/backend/
+COPY ml_model/ /app/ml_model/
+
 EXPOSE 8001
 
-CMD ["python", "web_files/backend/app.py"]
+# Run the application
+CMD ["python", "backend/app.py"]
 
 
 
