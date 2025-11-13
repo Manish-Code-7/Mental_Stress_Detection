@@ -98,11 +98,19 @@ class FusionEnsemble:
         return np.argmax(probas, axis=1)
 
 # Resolve paths relative to backend directory
-# backend is at: web_files/backend/
-# ml_model is at: ../ml_model/ (one level up from web_files)
+# In Docker: backend is at /app/backend/, ml_model is at /app/ml_model/
+# In local: backend is at web_files/backend/, ml_model is at ml_model/
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
-WEB_FILES_DIR = os.path.dirname(BACKEND_DIR)
-REPO_ROOT = os.path.dirname(WEB_FILES_DIR)
+
+# Check if running in Docker (backend dir is /app/backend)
+if BACKEND_DIR.endswith('/app/backend'):
+    # Docker environment
+    REPO_ROOT = '/app'
+else:
+    # Local environment
+    WEB_FILES_DIR = os.path.dirname(BACKEND_DIR)
+    REPO_ROOT = os.path.dirname(WEB_FILES_DIR)
+
 ML_DIR = os.path.join(REPO_ROOT, "ml_model")
 
 # In-memory stats
