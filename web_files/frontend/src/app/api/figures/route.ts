@@ -3,11 +3,7 @@ import { BACKEND_ENDPOINTS } from "@/lib/backend-config";
 
 export async function GET() {
   try {
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 
-                      process.env.BACKEND_URL || 
-                      "http://127.0.0.1:8001";
-    
-    const response = await fetch(`${backendUrl}/figures`, {
+    const response = await fetch(BACKEND_ENDPOINTS.figures, {
       cache: "no-store",
     });
     const data = await response.json();

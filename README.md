@@ -45,8 +45,41 @@ The backend auto-discovers pipelines/models from:
 - Adjust `BACKEND_URL` via `web_files/frontend/.env.local`
 
 ### Deploy
-- Frontend: Vercel/Netlify (Next.js)
-- Backend: Any Python host; run `python web_files/backend/app.py` (or add Gunicorn)
+
+#### Deploying to Render
+
+**Backend (Flask API)**
+1. Create a new **Web Service** on Render
+2. Connect your GitHub repository
+3. Configure:
+   - **Root Directory**: Leave empty (Dockerfile handles paths)
+   - **Environment**: Docker
+   - **Dockerfile Path**: `web_files/backend/Dockerfile`
+   - **Build Command**: (automatic with Docker)
+   - **Start Command**: (automatic with Docker)
+4. Set Environment Variables:
+   - `PORT=8001` (Render will override with their port)
+5. Deploy and note the backend URL (e.g., `https://your-backend.onrender.com`)
+
+**Frontend (Next.js)**
+1. Create a new **Web Service** on Render
+2. Connect your GitHub repository
+3. Configure:
+   - **Root Directory**: `web_files/frontend`
+   - **Environment**: Docker
+   - **Dockerfile Path**: `web_files/frontend/Dockerfile`
+   - **Build Command**: (automatic with Docker)
+   - **Start Command**: (automatic with Docker)
+4. Set Environment Variables:
+   - `NEXT_PUBLIC_BACKEND_URL=https://your-backend.onrender.com` (use your actual backend URL)
+   - `NEXT_TELEMETRY_DISABLED=1`
+5. Deploy
+
+**Alternative: Vercel/Netlify (Frontend) + Render (Backend)**
+- Frontend: Deploy to Vercel/Netlify (Next.js)
+- Backend: Deploy to Render or any Python host
+- Set `NEXT_PUBLIC_BACKEND_URL` to point to your backend URL
+
 
 
 
