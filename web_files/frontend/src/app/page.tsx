@@ -1,147 +1,264 @@
 import Link from "next/link";
 import { NavBar } from "@/components/NavBar";
-import { StatsPanel } from "@/components/StatsPanel";
-import { MetricsPanel } from "@/components/MetricsPanel";
+import { ArrowRight, Brain, Shield, Zap, BarChart3, CheckCircle2, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      <div className="relative overflow-hidden">
-        {/* Enhanced gradient background */}
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-50 via-purple-50/30 to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-indigo-50/50 via-transparent to-transparent" />
+    <div className="min-h-screen bg-white">
+      <NavBar />
+
+      {/* Hero Section */}
+      <section className="relative overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.1),transparent_50%)]" />
         </div>
-        <NavBar />
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border bg-white/80 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-blue-700 shadow-sm hover:shadow-md transition-shadow">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            Mental Wellness Insights
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 sm:pt-28 sm:pb-32">
+          <div className="text-center space-y-8">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-lg border border-purple-100">
+              <Sparkles className="w-4 h-4 text-purple-600" />
+              <span className="text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                AI-Powered Mental Wellness Detection
+              </span>
+            </div>
+
+            {/* Main Heading */}
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight">
+              <span className="block text-gray-900">Understand</span>
+              <span className="block mt-2 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                Mental Wellness
+              </span>
+              <span className="block text-gray-900 mt-2">Through AI</span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="max-w-3xl mx-auto text-lg sm:text-xl text-gray-600 leading-relaxed">
+              Advanced machine learning models analyze text patterns to identify stress and mental health indicators.
+              Get instant insights with our state-of-the-art NLP technology.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <Link
+                href="/detect"
+                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-200"
+              >
+                <span>Try It Now</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="/results"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 font-semibold rounded-2xl border-2 border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200"
+              >
+                <BarChart3 className="w-5 h-5" />
+                <span>View Results</span>
+              </Link>
+            </div>
+
+            {/* Stats */}
+            <div className="pt-12 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  74.6%
+                </div>
+                <div className="text-sm text-gray-600 mt-1">Accuracy</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                  2,838
+                </div>
+                <div className="text-sm text-gray-600 mt-1">Samples</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
+                  4 Models
+                </div>
+                <div className="text-sm text-gray-600 mt-1">Ensemble</div>
+              </div>
+            </div>
           </div>
-          <h1 className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent px-2">
-            Analyze Mental Wellness Through Text
-          </h1>
-          <p className="mt-6 text-base sm:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed px-4">
-            AI-powered text analysis to identify wellness indicators in written communication.
-            Built with advanced NLP and machine learning for accurate insights.
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Powerful Features
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Built with cutting-edge technology to provide accurate and actionable insights
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <div className="group relative p-8 bg-gradient-to-br from-blue-50 to-white rounded-3xl border-2 border-blue-100 hover:border-blue-300 hover:shadow-2xl transition-all duration-300">
+              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Brain className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Advanced NLP
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                State-of-the-art natural language processing models trained on extensive datasets for accurate mental health pattern detection.
+              </p>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="group relative p-8 bg-gradient-to-br from-purple-50 to-white rounded-3xl border-2 border-purple-100 hover:border-purple-300 hover:shadow-2xl transition-all duration-300">
+              <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Shield className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Privacy First
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Your data is processed securely with no third-party sharing. All analysis happens in real-time without permanent storage.
+              </p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="group relative p-8 bg-gradient-to-br from-indigo-50 to-white rounded-3xl border-2 border-indigo-100 hover:border-indigo-300 hover:shadow-2xl transition-all duration-300">
+              <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Zap className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Instant Results
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Get immediate analysis with detailed confidence scores and explanations. No waiting, no complexity - just insights.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              How It Works
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Three simple steps to get comprehensive mental wellness insights
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Step 1 */}
+            <div className="relative">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white text-xl font-bold mb-6">
+                  1
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Enter Text</h3>
+                <p className="text-gray-600">
+                  Paste or type any text you want to analyze. Can be social media posts, journal entries, or any written content.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="relative">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center text-white text-xl font-bold mb-6">
+                  2
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">AI Analysis</h3>
+                <p className="text-gray-600">
+                  Our fusion ensemble model processes the text using advanced NLP techniques and multiple ML algorithms.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="relative">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center text-white text-xl font-bold mb-6">
+                  3
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Get Insights</h3>
+                <p className="text-gray-600">
+                  Receive detailed analysis with confidence scores, stress indicators, and actionable wellness recommendations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Model Info Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 rounded-3xl p-12 text-white shadow-2xl">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+                Built on Advanced Machine Learning
+              </h2>
+              <p className="text-lg text-blue-100 mb-8">
+                Our Fusion Ensemble combines 4 powerful models trained on 2,838 samples with 119 features, achieving 74.6% accuracy with balanced precision and recall.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                  <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
+                  <span className="text-left">BaggingSGD + FeatureUnion</span>
+                </div>
+                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                  <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
+                  <span className="text-left">LogisticRegression + TF-IDF</span>
+                </div>
+                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                  <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
+                  <span className="text-left">BaggingSGD + TF-IDF</span>
+                </div>
+                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                  <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
+                  <span className="text-left">RidgeClassifier + TF-IDF</span>
+                </div>
+              </div>
+              <Link
+                href="/model-metrics"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-purple-600 font-semibold rounded-xl hover:bg-blue-50 transition-all shadow-lg"
+              >
+                <span>View Detailed Metrics</span>
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            Ready to Get Started?
+          </h2>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            Start analyzing text for mental wellness indicators with our advanced AI system.
+            It's fast, accurate, and completely free to use.
           </p>
-          <div className="mt-10 flex justify-center gap-3 sm:gap-4 flex-wrap px-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/detect"
-              className="group inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base text-white font-semibold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200 transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-200"
             >
-              <span>Analyze Text</span>
-              <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-            </Link>
-            <Link
-              href="/eda"
-              className="group inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-purple-600 to-purple-700 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base text-white font-semibold shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-purple-800 transition-all duration-200 transform hover:-translate-y-0.5"
-            >
-              <span>View Insights</span>
-              <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+              <span>Analyze Text Now</span>
+              <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="/awareness"
-              className="inline-flex items-center justify-center rounded-xl border-2 border-gray-300 bg-white/80 backdrop-blur-sm px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base text-gray-800 font-semibold hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 shadow-sm hover:shadow-md"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 font-semibold rounded-2xl border-2 border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200"
             >
-              Learn More
+              <span>Learn About Mental Wellness</span>
             </Link>
-          </div>
-
-          <div className="mt-16 sm:mt-20 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 px-4">
-            <div className="group rounded-2xl border-2 border-blue-100 bg-gradient-to-br from-blue-50 to-white p-6 sm:p-8 text-left shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
-                <span className="text-2xl">🎯</span>
-              </div>
-              <div className="text-blue-600 font-bold text-lg mb-2">Accurate Analysis</div>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                Advanced ensemble model trained on extensive datasets for reliable wellness pattern detection.
-              </p>
-            </div>
-            <div className="group rounded-2xl border-2 border-green-100 bg-gradient-to-br from-green-50 to-white p-6 sm:p-8 text-left shadow-sm hover:shadow-lg hover:border-green-200 transition-all duration-300">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors">
-                <span className="text-2xl">🔒</span>
-              </div>
-              <div className="text-green-600 font-bold text-lg mb-2">Privacy First</div>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                All text processing happens securely without third-party data sharing. Your privacy matters.
-              </p>
-            </div>
-            <div className="group rounded-2xl border-2 border-purple-100 bg-gradient-to-br from-purple-50 to-white p-6 sm:p-8 text-left shadow-sm hover:shadow-lg hover:border-purple-200 transition-all duration-300">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors">
-                <span className="text-2xl">💡</span>
-              </div>
-              <div className="text-purple-600 font-bold text-lg mb-2">Detailed Insights</div>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                Confidence scores and comprehensive analytics help you understand the analysis results better.
-              </p>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <section className="border-t bg-gradient-to-b from-white via-gray-50/50 to-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-lg bg-purple-100 px-3 py-1 text-sm font-medium text-purple-700 mb-4">
-                <span>⚡</span>
-                How it works
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
-                AI-Powered Text Analysis
-              </h2>
-              <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                Advanced machine learning models analyze text patterns to provide insights into mental wellness indicators with detailed confidence metrics.
-              </p>
-              <div className="space-y-4 pt-4">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center font-bold text-blue-600">
-                    1
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Enter Text</h3>
-                    <p className="text-sm text-gray-600">Provide text for analysis through our interface</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center font-bold text-purple-600">
-                    2
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">AI Analysis</h3>
-                    <p className="text-sm text-gray-600">Advanced NLP processes linguistic patterns</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center font-bold text-green-600">
-                    3
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">View Results</h3>
-                    <p className="text-sm text-gray-600">Get detailed analysis with confidence scores</p>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
-                <Link
-                  href="/detect"
-                  className="rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-white font-semibold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all"
-                >
-                  Start Analysis
-                </Link>
-                <Link
-                  href="/awareness"
-                  className="rounded-xl border-2 border-gray-300 bg-white px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base text-gray-800 font-semibold hover:bg-gray-50 hover:border-gray-400 transition-all shadow-sm"
-                >
-                  Wellness Resources
-                </Link>
-              </div>
-            </div>
-            <div className="space-y-6">
-              <StatsPanel />
-              <MetricsPanel />
-            </div>
           </div>
         </div>
       </section>

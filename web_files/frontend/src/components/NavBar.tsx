@@ -23,25 +23,63 @@ export function NavBar() {
     }`;
 
   const [healthy, setHealthy] = useState<boolean | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
+
   useEffect(() => {
     let mounted = true;
+    let retries = 0;
+    const maxRetries = 3;
+
     const ping = async () => {
       try {
-        const res = await fetch("/api/stats");
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+        const res = await fetch("/api/stats", {
+          signal: controller.signal,
+          cache: "no-store",
+        });
+
+        clearTimeout(timeoutId);
+
         if (!mounted) return;
-        setHealthy(res.ok);
-      } catch {
-        if (mounted) setHealthy(false);
+
+        if (res.ok) {
+          setHealthy(true);
+          retries = 0;
+          setRetryCount(0);
+        } else {
+          throw new Error("Backend returned error");
+        }
+      } catch (error) {
+        if (!mounted) return;
+
+        retries++;
+        setRetryCount(retries);
+
+        // Only mark as offline after multiple failed attempts
+        if (retries >= maxRetries) {
+          setHealthy(false);
+        }
       }
     };
+
+    // Initial ping
     ping();
-    const id = setInterval(ping, 30000);
-    return () => { mounted = false; clearInterval(id); };
+
+    // Check every 15 seconds (more frequent for better UX)
+    const id = setInterval(ping, 15000);
+
+    return () => {
+      mounted = false;
+      clearInterval(id);
+    };
   }, []);
 
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/detect", label: "Analyze" },
+    { href: "/results", label: "Results" },
     { href: "/eda", label: "Insights" },
     { href: "/model-metrics", label: "Metrics" },
     { href: "/awareness", label: "Resources" },
@@ -68,9 +106,23 @@ export function NavBar() {
 
             {/* Status Indicator */}
             <div className="ml-4 flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50">
-              <span className={`h-2 w-2 rounded-full ${healthy ? 'bg-green-500 animate-pulse' : healthy === false ? 'bg-red-500' : 'bg-gray-400'}`} />
+              <span className={`h-2 w-2 rounded-full ${
+                healthy
+                  ? 'bg-green-500 animate-pulse'
+                  : healthy === false
+                    ? 'bg-red-500'
+                    : retryCount > 0
+                      ? 'bg-yellow-500 animate-pulse'
+                      : 'bg-gray-400'
+              }`} />
               <span className="text-xs font-medium text-gray-600">
-                {healthy ? 'Online' : healthy === false ? 'Offline' : 'Checking...'}
+                {healthy
+                  ? 'Online'
+                  : healthy === false
+                    ? 'Offline'
+                    : retryCount > 0
+                      ? 'Reconnecting...'
+                      : 'Checking...'}
               </span>
             </div>
           </div>
@@ -110,9 +162,23 @@ export function NavBar() {
 
             {/* Mobile Status */}
             <div className="px-3 py-2 flex items-center gap-2">
-              <span className={`h-2 w-2 rounded-full ${healthy ? 'bg-green-500' : healthy === false ? 'bg-red-500' : 'bg-gray-400'}`} />
+              <span className={`h-2 w-2 rounded-full ${
+                healthy
+                  ? 'bg-green-500 animate-pulse'
+                  : healthy === false
+                    ? 'bg-red-500'
+                    : retryCount > 0
+                      ? 'bg-yellow-500 animate-pulse'
+                      : 'bg-gray-400'
+              }`} />
               <span className="text-sm text-gray-600">
-                Status: {healthy ? 'Online' : healthy === false ? 'Offline' : 'Checking...'}
+                Status: {healthy
+                  ? 'Online'
+                  : healthy === false
+                    ? 'Offline'
+                    : retryCount > 0
+                      ? 'Reconnecting...'
+                      : 'Checking...'}
               </span>
             </div>
           </div>
