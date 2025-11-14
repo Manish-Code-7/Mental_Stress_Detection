@@ -763,55 +763,16 @@ def eda():
 @app.route("/metrics", methods=["GET"])
 def metrics():
     """Get model evaluation metrics from various possible locations"""
-    # Try primary metric files first
-    metric_files = [
-        os.path.join(ML_DIR, "reports", "model_evaluation_results.json"),
-        os.path.join(ML_DIR, "reports", "evaluation_results.json"),
-        os.path.join(REPO_ROOT, "reports", "model_evaluation_results.json"),
-    ]
-    
     data = None
-    err = None
-    for p in metric_files:
-        data, err = _read_json(p)
-        if err is None and data is not None:
-            break
-    
-    # If primary files not found, try validation reports
-    if err or data is None:
-        validation_files = [
-            os.path.join(ML_DIR, "reports", "validation_report_20251111_164422.json"),
-            os.path.join(ML_DIR, "reports", "validation_report_20251111_164342.json"),
-            os.path.join(ML_DIR, "reports", "validation_report_20251111_084844.json"),
-            os.path.join(ML_DIR, "reports", "validation_report_20251110_224157.json"),
-        ]
-        
-        # Get the most recent validation report
-        for p in validation_files:
-            if os.path.exists(p):
-                val_data, val_err = _read_json(p)
-                if val_err is None and val_data is not None:
-                    # Transform validation report to metrics format
-                    data = {
-                        "accuracy": val_data.get("accuracy", 0),
-                        "precision": val_data.get("precision", 0),
-                        "recall": val_data.get("recall", 0),
-                        "f1_score": val_data.get("f1_score", 0),
-                        "confusion_matrix": val_data.get("confusion_matrix", []),
-                        "classification_report": val_data.get("classification_report", {}),
-                        "source": "validation_report",
-                        "timestamp": val_data.get("timestamp", datetime.utcnow().isoformat() + "Z"),
-                    }
-                    break
-    
-    # If still no data, try training metadata or fusion ensemble info
-    if data is None:
-        # Try fusion ensemble info first (has performance metrics)
-        fusion_info_path = os.path.join(ML_DIR, "models", "fusion_ensemble_info.json")
-        if os.path.exists(fusion_info_path):
-            fusion_data, fusion_err = _read_json(fusion_info_path)
-            if fusion_err is None and fusion_data is not None:
-                perf = fusion_data.get("performance", {})
+
+    # PRIORITY 1: Try fusion ensemble info first (has complete metrics and model info)
+    fusion_info_path = os.path.join(ML_DIR, "models", "fusion_ensemble_info.json")
+    if os.path.exists(fusion_info_path):
+        fusion_data, fusion_err = _read_json(fusion_info_path)
+        if fusion_err is None and fusion_data is not None:
+            perf = fusion_data.get("performance", {})
+            # Only use if performance metrics exist and are non-zero
+            if perf.get("accuracy", 0) > 0:
                 data = {
                     "accuracy": perf.get("accuracy", 0),
                     "precision": perf.get("precision", 0),
@@ -823,15 +784,30 @@ def metrics():
                     "source": "fusion_ensemble_info",
                     "timestamp": fusion_data.get("timestamp", datetime.utcnow().isoformat() + "Z"),
                 }
-        
-        # Try training metadata if fusion info not available
-        if data is None:
-            training_meta_path = os.path.join(ML_DIR, "reports", "training_metadata.json")
-            if os.path.exists(training_meta_path):
-                train_data, train_err = _read_json(training_meta_path)
-                if train_err is None and train_data is not None:
-                    # Extract best combination metrics
-                    best = train_data.get("best_combination", {})
+
+    # PRIORITY 2: Try primary metric files
+    if data is None:
+        metric_files = [
+            os.path.join(ML_DIR, "reports", "model_evaluation_results.json"),
+            os.path.join(ML_DIR, "reports", "evaluation_results.json"),
+            os.path.join(REPO_ROOT, "reports", "model_evaluation_results.json"),
+        ]
+
+        for p in metric_files:
+            file_data, err = _read_json(p)
+            if err is None and file_data is not None:
+                data = file_data
+                break
+
+    # PRIORITY 3: Try training metadata
+    if data is None:
+        training_meta_path = os.path.join(ML_DIR, "reports", "training_metadata.json")
+        if os.path.exists(training_meta_path):
+            train_data, train_err = _read_json(training_meta_path)
+            if train_err is None and train_data is not None:
+                # Extract best combination metrics
+                best = train_data.get("best_combination", {})
+                if best.get("accuracy", 0) > 0 or best.get("f1_score", 0) > 0:
                     data = {
                         "accuracy": best.get("accuracy", best.get("balanced_accuracy", 0)),
                         "f1_score": best.get("f1_score", 0),
@@ -840,6 +816,34 @@ def metrics():
                         "top_5_combinations": train_data.get("top_5_combinations", []),
                         "timestamp": train_data.get("timestamp", datetime.utcnow().isoformat() + "Z"),
                     }
+
+    # PRIORITY 4: Try validation reports (only as last resort)
+    if data is None:
+        validation_files = [
+            os.path.join(ML_DIR, "reports", "validation_report_20251111_164422.json"),
+            os.path.join(ML_DIR, "reports", "validation_report_20251111_164342.json"),
+            os.path.join(ML_DIR, "reports", "validation_report_20251111_084844.json"),
+            os.path.join(ML_DIR, "reports", "validation_report_20251110_224157.json"),
+        ]
+
+        # Get the most recent validation report with actual metrics
+        for p in validation_files:
+            if os.path.exists(p):
+                val_data, val_err = _read_json(p)
+                if val_err is None and val_data is not None:
+                    # Only use if it has actual performance metrics
+                    if val_data.get("accuracy", 0) > 0:
+                        data = {
+                            "accuracy": val_data.get("accuracy", 0),
+                            "precision": val_data.get("precision", 0),
+                            "recall": val_data.get("recall", 0),
+                            "f1_score": val_data.get("f1_score", 0),
+                            "confusion_matrix": val_data.get("confusion_matrix", []),
+                            "classification_report": val_data.get("classification_report", {}),
+                            "source": "validation_report",
+                            "timestamp": val_data.get("timestamp", datetime.utcnow().isoformat() + "Z"),
+                        }
+                        break
     
     # If no metrics found, return a helpful message with available files
     if data is None:
