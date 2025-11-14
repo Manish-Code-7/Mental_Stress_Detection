@@ -54,7 +54,7 @@ export function NavBar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              WellMind Analytics
+              Mental Stress Detection
             </div>
           </Link>
 

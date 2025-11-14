@@ -819,6 +819,7 @@ def metrics():
                     "f1_score": perf.get("f1_score", 0),
                     "model_type": fusion_data.get("model_type", "Fusion Ensemble"),
                     "num_models": fusion_data.get("num_models", 0),
+                    "models": fusion_data.get("models", []),
                     "source": "fusion_ensemble_info",
                     "timestamp": fusion_data.get("timestamp", datetime.utcnow().isoformat() + "Z"),
                 }
