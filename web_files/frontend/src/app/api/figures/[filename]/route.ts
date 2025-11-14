@@ -2,14 +2,14 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   request: Request,
-  { params }: { params: { filename: string } }
+  { params }: { params: Promise<{ filename: string }> }
 ) {
   try {
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ||
                       process.env.BACKEND_URL ||
                       "http://127.0.0.1:8001";
 
-    const { filename } = params;
+    const { filename } = await params;
     const response = await fetch(`${backendUrl}/figures/${filename}`, {
       cache: "no-store",
     });
