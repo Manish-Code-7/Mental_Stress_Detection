@@ -63,7 +63,7 @@ export default function Home() {
             <div className="pt-12 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
               <div className="text-center">
                 <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  74.6%
+                  77.89%
                 </div>
                 <div className="text-sm text-gray-600 mt-1">Accuracy</div>
               </div>
@@ -203,7 +203,7 @@ export default function Home() {
                 Built on Advanced Machine Learning
               </h2>
               <p className="text-lg text-blue-100 mb-8">
-                Our Fusion Ensemble combines 4 powerful models trained on 2,838 samples with 119 features, achieving 74.6% accuracy with balanced precision and recall.
+                Our Fusion Ensemble combines 4 powerful models trained on 2,838 samples with 119 features, achieving 77.89% accuracy with balanced precision and recall.
               </p>
               <div className="grid sm:grid-cols-2 gap-4 mb-8">
                 <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4">

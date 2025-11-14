@@ -13,16 +13,9 @@ Prereqs: Python 3.12, Node 18+ (or Docker)
 cd web_files/backend
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-
-# Configure environment (optional: MongoDB for contact form)
-cp .env.example .env
-# Edit .env and set MONGODB_URI if using MongoDB
-
 export PORT=8001
 python app.py
 ```
-
-**Note**: MongoDB is optional. The contact form will work without it (graceful degradation), but submissions won't be saved.
 
 2) Frontend
 ```bash
@@ -51,28 +44,6 @@ The backend auto-discovers pipelines/models from:
 - Frontend uses API routes to proxy requests to `BACKEND_URL` (default `http://127.0.0.1:8001`)
 - Adjust `BACKEND_URL` via `web_files/frontend/.env.local`
 
-### MongoDB Setup (Optional)
-The contact form uses MongoDB to store submissions. If MongoDB is not configured, the form will still work but submissions won't be saved.
-
-**Local MongoDB:**
-```bash
-# Install MongoDB locally or use Docker
-docker run -d -p 27017:27017 --name mongodb mongo:latest
-
-# Set in backend .env:
-MONGODB_URI=mongodb://localhost:27017/
-MONGODB_DB=mental_stress_db
-```
-
-**MongoDB Atlas (Cloud):**
-1. Create a free cluster at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Get your connection string
-3. Set in backend `.env`:
-```
-MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/?retryWrites=true&w=majority
-MONGODB_DB=mental_stress_db
-```
-
 ### Deploy
 
 #### Deploying to Render
@@ -88,8 +59,6 @@ MONGODB_DB=mental_stress_db
    - **Start Command**: (automatic with Docker)
 4. Set Environment Variables:
    - `PORT=8001` (Render will override with their port)
-   - `MONGODB_URI=<your-mongodb-atlas-connection-string>` (optional, for contact form)
-   - `MONGODB_DB=mental_stress_db` (optional)
 5. Deploy and note the backend URL (e.g., `https://your-backend.onrender.com`)
 
 **Frontend (Next.js)**

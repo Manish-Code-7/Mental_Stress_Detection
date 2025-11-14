@@ -42,7 +42,7 @@ export default function DetectPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
-                <p className="text-gray-700 mb-6 leading-relaxed">
+                <p className="text-gray-700 mb-6 leading-relaxed text-center">
                   Enter any text you want to analyze. This could be a social media post, journal entry,
                   email, or any written content. Our AI will analyze linguistic patterns to identify
                   potential stress indicators.
@@ -159,7 +159,7 @@ export default function DetectPage() {
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-gray-100">
                     <span className="text-gray-600">Accuracy</span>
-                    <span className="font-semibold text-green-600">74.6%</span>
+                    <span className="font-semibold text-green-600">77.89%</span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-gray-100">
                     <span className="text-gray-600">Training Samples</span>

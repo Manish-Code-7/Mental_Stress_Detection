@@ -10,40 +10,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from collections import Counter
 import re
-from dotenv import load_dotenv
-from pymongo import MongoClient
-from pymongo.errors import ConnectionFailure, OperationFailure
-
-# Load environment variables
-load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
-
-# MongoDB Connection
-MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017/")
-MONGODB_DB = os.getenv("MONGODB_DB", "mental_stress_db")
-
-mongo_client = None
-mongo_db = None
-
-def get_mongo_connection():
-    """Get or create MongoDB connection"""
-    global mongo_client, mongo_db
-
-    if mongo_client is None:
-        try:
-            mongo_client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=5000)
-            # Test connection
-            mongo_client.admin.command('ping')
-            mongo_db = mongo_client[MONGODB_DB]
-            print(f"✓ Connected to MongoDB: {MONGODB_DB}")
-        except (ConnectionFailure, OperationFailure) as e:
-            print(f"⚠️ MongoDB connection failed: {e}")
-            mongo_client = None
-            mongo_db = None
-
-    return mongo_db
 
 
 # ===============================
@@ -951,61 +920,6 @@ def list_figures():
                 continue
     
     return jsonify({"figures": sorted(set(figures))})
-
-
-@app.route("/contact", methods=["POST"])
-def submit_contact():
-    """Submit contact form to MongoDB"""
-    try:
-        data = request.get_json()
-
-        # Validate required fields
-        required_fields = ["name", "email", "subject", "message"]
-        for field in required_fields:
-            if not data.get(field):
-                return jsonify({"error": f"Missing required field: {field}"}), 400
-
-        # Get MongoDB connection
-        db = get_mongo_connection()
-
-        if db is None:
-            # MongoDB not available, return success anyway (graceful degradation)
-            print(f"⚠️ MongoDB unavailable, contact form data not saved: {data.get('email')}")
-            return jsonify({
-                "success": True,
-                "message": "Message received successfully",
-                "note": "Database unavailable, message logged locally"
-            }), 200
-
-        # Create contact document
-        contact_doc = {
-            "name": data["name"],
-            "email": data["email"],
-            "subject": data["subject"],
-            "message": data["message"],
-            "submitted_at": datetime.utcnow(),
-            "status": "new",
-            "ip_address": request.remote_addr,
-            "user_agent": request.headers.get("User-Agent", "Unknown")
-        }
-
-        # Insert into MongoDB
-        result = db.contacts.insert_one(contact_doc)
-
-        print(f"✓ Contact form submitted: {data['email']} -> {result.inserted_id}")
-
-        return jsonify({
-            "success": True,
-            "message": "Thank you for contacting us! We'll get back to you soon.",
-            "id": str(result.inserted_id)
-        }), 201
-
-    except Exception as e:
-        print(f"⚠️ Error submitting contact form: {e}")
-        return jsonify({
-            "error": "Failed to submit message",
-            "details": str(e)
-        }), 500
 
 
 if __name__ == "__main__":

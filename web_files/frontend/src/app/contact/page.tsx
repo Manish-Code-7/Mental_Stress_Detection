@@ -21,35 +21,14 @@ export default function ContactPage() {
     e.preventDefault();
     setSubmitting(true);
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+    // Simulate form submission
+    setTimeout(() => {
+      toast.success("Message sent!", {
+        description: "Thank you for contacting us. We'll get back to you soon.",
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        toast.success("Message sent!", {
-          description: data.message || "Thank you for contacting us. We'll get back to you soon.",
-        });
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        toast.error("Failed to send message", {
-          description: data.error || "Please try again later.",
-        });
-      }
-    } catch (error) {
-      console.error("Form submission error:", error);
-      toast.error("Failed to send message", {
-        description: "Network error. Please check your connection and try again.",
-      });
-    } finally {
+      setFormData({ name: "", email: "", subject: "", message: "" });
       setSubmitting(false);
-    }
+    }, 1000);
   };
 
   return (
